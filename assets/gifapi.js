@@ -66,7 +66,7 @@ $("#add-search").on("click", function (event) {
     var typed = $("#userSearch").val().trim();
 
     // Here we construct our URL
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + typed + "&api_key=WOKx9oTRibMs6vJP9NRHljx1clYCkpXg&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + typed + "&api_key=WOKx9oTRibMs6vJP9NRHljx1clYCkpXg&limit=10";
 
     //ajax call to get the data
     $.ajax({
