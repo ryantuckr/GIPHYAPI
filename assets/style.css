@@ -1,0 +1,32 @@
+#banner {
+    background-image: url("hpbanner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 437px;
+    
+}
+
+#gifLogo {
+    background-image: url("giphy.gif");
+    background-size: 15%;
+    height:75px;
+    background-repeat: no-repeat;
+}
+
+#wrapper {
+    background-color: black; 
+}
+
+p {
+    color: white;
+}
+
+#text {
+    color: white;
+    font-size: 25px;
+}
+
+#search {
+    size: 35px;
+}
+

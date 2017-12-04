@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Harry Potter GIPHY API</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="banner"></div>
+    <br>
+    
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id ="gifLogo"></div>
+            <div class="col-md-12" id="buttonDiv">
+            </div>
+        </div>
+        
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-3" id="search">
+                <form id="user-search">
+                    <label for="userSearch" id="text">Search for a Harry Potter Character:</label>
+                    
+                    
+                    <input type="text" id="userSearch">
+                    <select>
+                            <option value=>List of Characters:</option>
+                            <option id="dumbledore" value="dumbledore">Albus Dumbledore</option>
+                            <option value="voldemort">Lord Voldemort</option>
+                            <option value="snape">Severus Snape</option>
+                            <option value="hagrid">Rebeus Hagrid</option>
+                            <option value="malfoy">Draco Malfoy</option>
+                            <option value="dobby">Dobby</option>
+                            <option value="madeye">Alastor "Mad-Eye" Moody</option>
+                            <option value="mcgonagall">Minerva McGonagall</option>
+                            <option value="malfoy">Lucius Malfoy</option>
+                            <option value="lupin">Remus Lupin</option>
+                            <option value="sirius">Sirius Black</option>
+                            <option value="longbottom">Neville Longbottom</option>
+                            <option value="bella">Bellatrix Lestrange</option>
+
+                          </select>
+                    <br>
+                    <input id="add-search" type="submit" value="Search" class ="btn btn-lg btn-warning">
+                </form>
+            </div>
+            <div class="col-md-9" id="gifData"></div>
+        </div>
+    </div>
+</div>
+
+
+        <script src="assets/gifapi.js"></script>
+</body>
+
+</html>
