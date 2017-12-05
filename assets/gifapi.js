@@ -4,13 +4,86 @@
 var actor = ["Harry Potter", "Hermonie Granger", "Ron Weasley"];
 
 $("#buttonDiv").on("click", function (event) {
+    var name = $(this).attr("data-name");
+    console.log(name);
     
-    var clicked = $(this).val();
-    console.log(clicked);
+
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=WOKx9oTRibMs6vJP9NRHljx1clYCkpXg&limit=10";
+
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (response) {
+        console.log("API Response ", response);
+
+        for (i = 0; i < response.data.length; i++) {
+            console.log("Still Link: " + response.data[i].images.fixed_height_still.url);
+            console.log("Animated Link: " + response.data[i].images.fixed_height.url);
+            console.log("Movie Rating: " + response.data[i].rating);
+
+            //give all the new divs the same class
+            var gifDiv = $("<div class='gif'>");
+            gifDiv.attr("data-state", "still");
+            gifDiv.attr("data-still", gifUrlStill);
+            gifDiv.attr("data-animate", gifUrlAnimate);
+
+            //RATINGS
+            //store the rating in a variable
+            var rating = response.data[i].rating;
+            //create an element to display the rating
+            var ratingDisplay = $("<p>").text(JSON.stringify("GIF Rating: " + rating));
+            //display the rating
+            gifDiv.append(ratingDisplay);
+
+
+            //IMAGES
+            //store the still images in a variable
+            var gifUrlStill = response.data[i].images.fixed_height_still.url;
+
+            //store the animated images in a variable
+
+            var gifUrlAnimate = response.data[i].images.fixed_height.url;
+            //gifUrlAnimate.attr("data-state","animate")
+
+
+            //create an element to display the image
+            var gifDisplay = $("<img>").attr("src", gifUrlStill);
+            console.log(gifDisplay);
+
+            //display the image
+            gifDiv.append(gifDisplay);
+
+            //this should dump whatever is in the div to the html
+            $("#gifData").prepend(gifDiv);
+
+        }
+        $(".gif").on("click", function () {
+            
+            
+                        var state = $(this).attr("data-state");
+                        console.log(state);
+            
+                        if (state === "still") {
+                            $(this).children().attr("src", $(this).attr("data-animate"));
+                            $(this).attr("data-state", "animate");
+                        } else {
+            
+                            $(this).children().attr("src", $(this).attr("data-still"));
+                            $(this).attr("data-state", "still");
+                        }
+            
+            
+            
+                    });
+
+    });
 
 
 
 });
+
+
 
 
 function renderButtons() {
@@ -26,12 +99,13 @@ function renderButtons() {
         var a = $("<button>");
         // Adding a class
         a.addClass("btn btn-lg btn-warning");
+
         // Adding a data-attribute with a value of the movie at index i
         a.attr("data-name", actor[i]);
         // Providing the button's text with a value of the movie at index i
         a.text(actor[i]);
 
-              // Adding the button to the HTML
+        // Adding the button to the HTML
         $("#buttonDiv").append(a);
     }
 }
